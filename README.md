@@ -1,50 +1,72 @@
-# React + TypeScript + Vite
+# Second Brain App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Second Brain App is a web application designed to store and organize important links that you want to keep for future use. 
+Whether it's a YouTube video, a Twitter post, or any other valuable content, this app acts as your personal digital memory,
+ensuring that you can easily access and manage your saved links anytime. Built with modern web technologies,
+it provides a seamless and responsive user experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Responsive Design**: Optimized for all screen sizes, from mobile to desktop.
+- **Content Collection**: Add and store YouTube and Twitter content in your personal brainspace.
+- **Share Brain**: Share your curated brainspace with others.
+- **User Authentication**: Sign up and sign in to access your personalized brainspace.
+- **Content Filtering**: View content categorized by type (YouTube, Twitter, or all).
 
-## Expanding the ESLint configuration
+## Key Components
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Brainspace.tsx**: Handles the main content view, displays content based on the selected category, and provides modals for adding new content and sharing the brainspace.
+- **Button.tsx**: A reusable button component with support for icons and customizable styles.
+- **Card.tsx**: Displays individual content items (YouTube videos or Twitter embeds) and includes actions like sharing and deleting content.
+- **CreateContentModal.tsx**: Modal for adding new content to the brainspace.
+- **ShareWindow.tsx**: Modal for sharing the brainspace.
+- **Sidebar.tsx**: Navigation sidebar to filter content by type.
+- **Auth.tsx**: Handles user sign-up and sign-in functionality.
+- **Dashboard.tsx**: Main layout component combining the sidebar and the brainspace.
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/sachin904/Second-Brain-App.git
+   ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Navigate to the Frontend Directory**
+   ```bash
+   cd Second-Brain-App/Second-Brain-FE
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+3. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+4. **Run the Application**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in Browser**
+   Navigate to `http://localhost:5173` in your browser.
+
+## Usage
+
+- **Sign Up or Sign In**: Create an account or log in to access your brainspace.
+- **Add Content**: Use the "Add Content" button to store YouTube or Twitter links in your brainspace.
+- **View Content**: Browse through your content categorized by YouTube, Twitter, or all.
+- **Share Brain**: Click "Share Brain" to generate a shareable link to your brainspace.
+- **Delete Content**: Remove unwanted items from your brainspace.
+
+## Technologies
+
+- **Frontend**: React, TypeScript, Vite, Tailwind CSS
+- **Backend**: [Specify backend technologies if available]
+- **State Management**: [Specify state management tools if used]
+- **API Communication**: Axios
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+
+
+
