@@ -31,11 +31,11 @@ export function SignupPage(){
               <div className="flex-col justify-center bg-white rounded-md w-56 m-auto p-8 ">
                 
                  <div>
-                 <Input reference={UsernameRef} placeholder="Username"/>
-                 <Input reference={PasswordRef} placeholder="Password"/>
+                 <Input type="text" reference={UsernameRef} placeholder="Username"/>
+                 <Input type="password" reference={PasswordRef} placeholder="Password"/>
                  </div> 
                  <div className="flex justify-center">
-                  <Button onClick={signup}  loading={false} variant="secondary" size="md" text="SignUp"/></div>
+                  <Button onClick={signup}  loading={false} variant="primary" size="md" text="SignUp"/></div>
               </div> 
        </div>
     </div>

@@ -3,11 +3,12 @@ interface Inputprops{
     placeholder:string
     onChange?:()=>void;
     reference?:any;
+    type:string;
    
 }
-export function Input({placeholder,reference}:Inputprops){
+export function Input({placeholder,reference,type}:Inputprops){
     return<>
-    <input ref={reference}  placeholder={placeholder}  className="h-10 w-full border-gray-100 border-2 rounded my-3 outline-blue-100">
+    <input type={type} ref={reference}  placeholder={placeholder}  className="h-10 w-full border-gray-100 border-2 rounded my-3 outline-blue-100">
         
     </input>
     </>

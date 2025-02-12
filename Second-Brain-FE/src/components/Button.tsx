@@ -11,8 +11,8 @@ interface ButtonProps{
   loading?:boolean;
 }
 const variantStyle={
-   "primary":"bg-purple-200 text-purple-600",
-    "secondary":"bg-purple-600 text-white "
+   "primary":"bg-purple-600 text-white",
+    "secondary":"bg-purple-200 text-purple-600 "
 }
  
 const defaultStyle="px-4 py-2 rounded-md font-light text-lg flex justify-center "
