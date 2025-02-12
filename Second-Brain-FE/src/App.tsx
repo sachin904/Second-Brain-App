@@ -8,7 +8,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 function App() {
   return<div>
     <BrowserRouter>
-       <Routes >
+       <Routes  >
+       <Route index element={<SignupPage/>} ></Route>
            <Route path="/signup" element={<SignupPage/>} ></Route>
            <Route path="/signin" element={<SigninPage/>} ></Route>
            <Route path="/DashBoard" element={<DashBoard/>} ></Route>
