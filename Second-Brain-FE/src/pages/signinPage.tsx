@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 export function SigninPage(){
 
-   const UsernameRef=useRef<HTMLInputElement>();
-   const PasswordRef=useRef<HTMLInputElement>();
+   const UsernameRef=useRef<HTMLInputElement>(null);
+   const PasswordRef=useRef<HTMLInputElement>(null);
    const navigate=useNavigate();
 
    async function signin(){
