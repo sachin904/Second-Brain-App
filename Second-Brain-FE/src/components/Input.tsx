@@ -3,7 +3,7 @@ interface Inputprops{
     placeholder:string
     onChange?:()=>void;
     reference?:any;
-    type:string;
+    type?:string;
    
 }
 export function Input({placeholder,reference,type}:Inputprops){

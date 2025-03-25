@@ -22,6 +22,7 @@ export function SignupPage(){
          userName:username,
          password
       });
+      console.log(res.data);
       alert(res.data.msg);
       navigate("/signin");
    }

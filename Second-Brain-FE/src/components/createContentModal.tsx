@@ -46,7 +46,7 @@ alert(res.data.msg);
           </span>
         </div>
         <div>
-          <Input reference={TitleRef} placeholder="Title" />
+          <Input reference={TitleRef} placeholder="Title"  />
           <Input reference={LinkRef} placeholder="Link" />
           <div className="flex justify-center m-2 gap-1">
             <Button size="sm" text="youtube" onClick={() => setType(ContentType.Youtube)} variant={type === ContentType.Youtube ? "primary" : "secondary"} ></Button>
