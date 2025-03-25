@@ -12,7 +12,7 @@ export function MainContent(){
     const {contents,refresh}=useContent();
     useEffect(()=>{
       refresh();
-    },[modalOpen])
+    },[modalOpen,refresh])
     return<div className='p-2  min-h-screen w-full  bg-gray-100'>
       <CreateContentModal open={modalOpen} onClose={()=>{setModalOpen(false)}}/>
       <div className='flex justify-end  gap-2 '>
@@ -27,6 +27,7 @@ export function MainContent(){
           }
         });
           const link="http://localhost:3001/api/v1/brain/"+response.data.hash;
+          console.log(link);
           alert(link);
     }} startIcon={<ShareIcon />} variant='primary' size='lg' text="share" ></Button>
     <Button onClick={()=>{setModalOpen(true)}} startIcon={<PlusIcon />}variant='secondary' size='lg' text="Add Content" ></Button>
