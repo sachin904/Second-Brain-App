@@ -4,7 +4,7 @@ import { Card } from '../components/Card'
 import { CreateContentModal } from '../components/createContentModal'
 import { PlusIcon } from '../icons/PlusIcon'
 import { ShareIcon } from '../icons/ShareIcon'
-import { useContent } from '../Hooks/useContent'
+import useContent from '../Hooks/useContent';
 import axios from 'axios'
 import { BACKEND_URL } from '../config'
 export function MainContent(){
@@ -40,3 +40,5 @@ export function MainContent(){
     </div>
     
   }
+
+  
