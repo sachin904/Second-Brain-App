@@ -33,7 +33,7 @@ export function MainContent() {
         const link = "http://localhost:3001/api/v1/brain/" + response.data.hash;
         console.log(link);
         alert(link);
-      }} startIcon={<ShareIcon />} variant='primary' size='lg' text="share" ></Button>
+      }} startIcon={<ShareIcon />} variant='primary' text="share" ></Button>
       <Button   onClick={() => {
     const token = localStorage.getItem("token");
     if (!token || token === "undefined") {
@@ -41,12 +41,12 @@ export function MainContent() {
       return;
     }
     setModalOpen(true);
-  }}startIcon={<PlusIcon />} variant='secondary' size='lg' text="Add Content" ></Button>
+  }}startIcon={<PlusIcon />} variant='secondary'  text="Add Content" ></Button>
     </div>
     <div className='flex gap-2  flex-wrap  '>
 
-      {contents.map(({ type, link, title }) =>
-        <Card title={title} link={link} type={type} />)}
+      {contents.map(({ type, link, title,tags }) =>
+        <Card key={ link } title={title} link={link} type={type} tags={tags} />)}
     </div>
   </div>
 

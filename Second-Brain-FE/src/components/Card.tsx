@@ -49,7 +49,7 @@ export function Card(props: CardProps) {
         <div className=" w-full  text-center  rounded-md my-2 ">
             <div >
         {props.type==="youtube"&&<div ref={twitterRef}><iframe className="w-full rounded-md" src={props.link.replace("watch","embed").replace("?v=","/").replace("youtu.be","www.youtube.com/embed")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe></div>}
-{props.type==="twitter" &&<div><blockquote className="twitter-tweet w-full ">
+ {props.type==="twitter" &&<div><blockquote className="twitter-tweet w-full ">
   <a href={props.link.replace("x.com","twitter.com")}></a> 
 </blockquote></div>}
         
@@ -57,7 +57,13 @@ export function Card(props: CardProps) {
         </div>
         <div>
             <div>
-                <span className="bg-purple-100 text-purple-600">hiiiii</span>
+          <div className="flex flex-wrap gap-1 mt-2">
+  {props.tags.map((tag, index) => (
+    <span key={index} className="bg-purple-100 text-purple-600 px-2 py-1 rounded-full text-xs">
+      {typeof tag === "string" ? tag : tag.title}
+    </span>
+  ))}
+</div>
             </div>
             <div>sjanxnabxijb</div>
         </div>
@@ -70,6 +76,7 @@ interface CardProps {
     title: string;
      type: "youtube" | "twitter";
      link:  string;
+     tags: {title:string}[];
 
 }
 

@@ -13,7 +13,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 import { z } from "zod";
-import { ContentModel, LinkModel, UserModel } from "./db";
+import { ContentModel, LinkModel, UserModel,TagModel } from "./db";
 import { JWT_SECRET } from "./config";
 import { userMiddleware } from "./middleware";
 import { random } from "./utils";
@@ -104,11 +104,22 @@ app.post("/api/v1/content",userMiddleware ,async function (req, res) {
     const link= req.body.link;
     const type=req.body.type;
     const title= req.body.title;
+    const tag=req.body.tags;
+    const tagTitles=tag.split(",").map((t:string)=>t.trim().toLowerCase());
+    const tagIds=[];
+    for(const title of tagTitles){
+        let existingTag = await  TagModel.findOne({title});
+        if(!existingTag){
+            existingTag=await TagModel.create({title});
+        }
+        tagIds.push(existingTag._id);
+
+    }
      await ContentModel.create({
         link:link,
         type:type,
         title:title,
-        tags:[],
+        tags:tagIds,
         userId: req.userId
 
     })
@@ -123,10 +134,11 @@ app.get("/api/v1/content",userMiddleware, async function (req, res) {
     const userId=req.userId;
     const content= await ContentModel.find({
         userId:userId
-    }).populate("userId")
+    }).populate("userId").populate("tags");
    res.json({
     content
 });
+console.log("Populated content with tags:", JSON.stringify(content, null, 2));
 })
 
 app.delete("/api/v1/content", userMiddleware,async function (req, res) {

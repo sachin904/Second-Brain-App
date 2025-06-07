@@ -17,14 +17,15 @@ interface CreateContentModalProps {
 export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
   const TitleRef = useRef<HTMLInputElement>(null);
   const LinkRef = useRef<HTMLInputElement>(null);
+  const TagRef = useRef<HTMLInputElement>(null);
   const [type, setType] = useState(ContentType.Youtube);
   async function addContent() {
 
     const link = LinkRef.current?.value;
     const title = TitleRef.current?.value;
-
+    const tags=TagRef.current?.value;
     const res=await axios.post(BACKEND_URL+"/api/v1/content", {
-      link, title, type
+      link, title, type, tags
     },
       {
         headers: {
@@ -48,13 +49,14 @@ alert(res.data.msg);
         <div>
           <Input reference={TitleRef} placeholder="Title"  />
           <Input reference={LinkRef} placeholder="Link" />
+          <Input reference={TagRef} placeholder="Tags (comma separated)"/>
           <div className="flex justify-center m-2 gap-1">
-            <Button size="sm" text="youtube" onClick={() => setType(ContentType.Youtube)} variant={type === ContentType.Youtube ? "primary" : "secondary"} ></Button>
-            <Button size="sm" text="twitter" onClick={() => setType(ContentType.Twitter)} variant={type === ContentType.Twitter ? "primary" : "secondary"} ></Button>
+            <Button  text="youtube" onClick={() => setType(ContentType.Youtube)} variant={type === ContentType.Youtube ? "primary" : "secondary"} ></Button>
+            <Button  text="twitter" onClick={() => setType(ContentType.Twitter)} variant={type === ContentType.Twitter ? "primary" : "secondary"} ></Button>
           </div>
         </div>
         <div className="flex justify-center">
-          <Button onClick={addContent} variant="secondary" size="md" text="Add Content" /></div>
+          <Button onClick={addContent} variant="secondary" text="Add Content" /></div>
       </div>
     </div>}
   </div>
