@@ -34,7 +34,14 @@ export function MainContent() {
         console.log(link);
         alert(link);
       }} startIcon={<ShareIcon />} variant='primary' size='lg' text="share" ></Button>
-      <Button onClick={() => { setModalOpen(true) }} startIcon={<PlusIcon />} variant='secondary' size='lg' text="Add Content" ></Button>
+      <Button   onClick={() => {
+    const token = localStorage.getItem("token");
+    if (!token || token === "undefined") {
+      alert("Please sign in first.");
+      return;
+    }
+    setModalOpen(true);
+  }}startIcon={<PlusIcon />} variant='secondary' size='lg' text="Add Content" ></Button>
     </div>
     <div className='flex gap-2  flex-wrap  '>
 
@@ -45,3 +52,5 @@ export function MainContent() {
 
 }
 
+
+ 

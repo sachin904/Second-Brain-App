@@ -22,22 +22,43 @@ export function SigninPage(){
       })
     const jwt= res.data.token;
     localStorage.setItem("token",jwt);
+      
       alert(res.data.msg);
-
-      navigate("/DashBoard")
+       
+       if (res.data.msg === "signed in") {
+      navigate("/secondBrain/DashBoard");
+    }
    }
      
-  return <div>
-        <div className="h-screen w-screen fixed top-0 left-0 bg-slate-300 bg-opacity-60 flex justify-center">
-              <div className="flex-col justify-center bg-white rounded-md w-56 m-auto p-8 ">
-                
-                 <div>
-                 <Input  type="text" reference={UsernameRef} placeholder={"Username"}/>
-                 <Input type="password" reference={PasswordRef} placeholder={"Password"}/>
-                 </div> 
-                 <div className="flex justify-center"><Button  onClick={signin} loading={false} variant="primary" size="md" text="Signin"/></div>
-              </div> 
-       </div>
+return (
+  <div className="h-screen w-screen bg-gradient-to-br from-gray-200 to-gray-400 flex items-center justify-center">
+    <div className="bg-white shadow-xl rounded-xl p-8 w-80">
+      <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">Sign In</h2>
+
+      <div className="space-y-4">
+        <Input type="text" reference={UsernameRef} placeholder="Username" />
+        <Input type="password" reference={PasswordRef} placeholder="Password" />
+      </div>
+
+      <div className="mt-6">
+        <Button
+          onClick={signin}
+          loading={false}
+          variant="primary"
+          size="full"
+          text="Sign In"
+        />
+      </div>
+
+      <p className="text-center text-sm text-gray-500 mt-4">
+        Don’t have an account?{" "}
+        <a href="/secondBrain/signup" className="text-blue-600 hover:underline">
+          Sign up
+        </a>
+      </p>
     </div>
+  </div>
+);
+
 
 }

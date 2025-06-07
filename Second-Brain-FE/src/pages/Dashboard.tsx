@@ -3,14 +3,15 @@ import { SideBar } from "../components/sideBar";
 
 
 
-export function DashBoard(){
-    return<>
-       <div className='flex  '>
-  <SideBar/>
-  <MainContent/>
-  </div>
-    </>
+export function DashBoard() {
+  return (
+    <div className="flex  w-screen">
+      <SideBar />
+      <MainContent />
+    </div>
+  );
 }
+
 
   
   
