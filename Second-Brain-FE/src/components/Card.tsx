@@ -5,10 +5,13 @@ import { DeleteIcon } from "../icons/DeleteIcon";
 import { YoutubeIcon } from "../icons/YoutubeIcon";
 import { TwritterIcon } from "../icons/TwitterIcons";
 import { useEffect, useRef } from "react";
+import { BACKEND_URL } from "../config";
+import axios from "axios";
+
 
 
 export function Card(props: CardProps) {
-
+  
     const twitterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,6 +31,20 @@ export function Card(props: CardProps) {
     if (twitterRef.current) observer.observe(twitterRef.current);
     return () => observer.disconnect();
   }, []);
+  async function handleDelete(){
+    try{
+     await axios.delete(`${BACKEND_URL}/api/v1/content`,{
+        data:{contentId:props.contentId},
+        headers:{
+          Authorization:localStorage.getItem("token")||"",
+        },
+      });
+      
+       props.onDelete();
+    }catch (error){
+      console.error("failed to delete content",error);
+    }
+  }
     return <div>
         <div className="bg-white shadow-md border-slate-200 border-2 p-4 rounded-md max-w-72 my-10 ">
         <div className="flex justify-between">
@@ -43,7 +60,7 @@ export function Card(props: CardProps) {
             <div className="flex justify-between text-gray-400 ">
                 <a href={props.link} target="_blank"><div className="mx-2"><ShareIcon /></div>
                 </a>
-                <div><DeleteIcon /></div>
+                <div onClick={handleDelete} className="cursor-pointer"><DeleteIcon /></div>
             </div>
         </div>
         <div className=" w-full  text-center  rounded-md my-2 ">
@@ -65,7 +82,7 @@ export function Card(props: CardProps) {
   ))}
 </div>
             </div>
-            <div>sjanxnabxijb</div>
+            <div>{props.description}</div>
         </div>
     </div>
     </div>
@@ -77,6 +94,8 @@ interface CardProps {
      type: "youtube" | "twitter";
      link:  string;
      tags: {title:string}[];
-
+     description:string;
+     contentId:string;
+    onDelete: () => void; 
 }
 

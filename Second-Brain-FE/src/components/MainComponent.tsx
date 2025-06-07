@@ -45,8 +45,8 @@ export function MainContent() {
     </div>
     <div className='flex gap-2  flex-wrap  '>
 
-      {contents.map(({ type, link, title,tags }) =>
-        <Card key={ link } title={title} link={link} type={type} tags={tags} />)}
+      {contents.map(({ type, link, title,tags,description,_id }) =>
+        <Card key={ link } description={description} title={title} link={link} type={type} tags={tags} contentId={_id}   onDelete={() => refresh()} />)}
     </div>
   </div>
 
