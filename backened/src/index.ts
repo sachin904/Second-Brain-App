@@ -104,6 +104,7 @@ app.post("/api/v1/content",userMiddleware ,async function (req, res) {
     const link= req.body.link;
     const type=req.body.type;
     const title= req.body.title;
+    const description=req.body.description;
     const tag=req.body.tags;
     const tagIds=[];
     if (tag && typeof tag === 'string'){
@@ -123,6 +124,7 @@ app.post("/api/v1/content",userMiddleware ,async function (req, res) {
         type:type,
         title:title,
         tags:tagIds,
+        description:description,
         userId: req.userId
 
     })
