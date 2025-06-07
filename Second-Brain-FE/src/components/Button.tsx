@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 
 interface ButtonProps{
   variant:"primary"|"secondary";
-  size:"sm"|"md"|"lg"|"full";
+  size:"full";
   text:string;
   startIcon?:ReactElement;
   endIcon?:ReactElement;
@@ -15,10 +15,8 @@ const variantStyle={
     "secondary":"bg-purple-200 text-purple-600 "
 }
 const sizeStyle = {
-  full:"w-full",
-  sm:"w-auto",
-  lg:"w-auto",
-  md:"w-auto"
+  full:"w-full"
+  
 };
 
  
