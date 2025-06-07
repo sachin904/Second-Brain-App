@@ -105,8 +105,10 @@ app.post("/api/v1/content",userMiddleware ,async function (req, res) {
     const type=req.body.type;
     const title= req.body.title;
     const tag=req.body.tags;
-    const tagTitles=tag.split(",").map((t:string)=>t.trim().toLowerCase());
     const tagIds=[];
+    if (tag && typeof tag === 'string'){
+    const tagTitles=tag.split(",").map((t:string)=>t.trim().toLowerCase());
+    
     for(const title of tagTitles){
         let existingTag = await  TagModel.findOne({title});
         if(!existingTag){
@@ -115,6 +117,7 @@ app.post("/api/v1/content",userMiddleware ,async function (req, res) {
         tagIds.push(existingTag._id);
 
     }
+}
      await ContentModel.create({
         link:link,
         type:type,
@@ -138,7 +141,7 @@ app.get("/api/v1/content",userMiddleware, async function (req, res) {
    res.json({
     content
 });
-console.log("Populated content with tags:", JSON.stringify(content, null, 2));
+
 })
 
 app.delete("/api/v1/content", userMiddleware,async function (req, res) {
