@@ -15,7 +15,10 @@ const variantStyle={
     "secondary":"bg-purple-200 text-purple-600 "
 }
 const sizeStyle = {
-  full:"w-full"
+  full:"w-full",
+  sm:"w-auto",
+  lg:"w-auto",
+  md:"w-auto"
 };
 
  
