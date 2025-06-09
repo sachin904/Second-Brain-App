@@ -7,6 +7,8 @@ import { ShareIcon } from '../icons/ShareIcon'
 import {useContent} from '../Hooks/useContent';
 import axios from 'axios'
 import { BACKEND_URL } from '../config'
+import { Frame } from './Frame'
+
 export function MainContent() {
   const [modalOpen, setModalOpen] = useState(false);
   const  {contents,refresh}  = useContent();
@@ -46,7 +48,9 @@ export function MainContent() {
     <div className='flex gap-2  flex-wrap  '>
 
       {contents.map(({ type, link, title,tags,description,_id }) =>
-        <Card key={ link } description={description} title={title} link={link} type={type} tags={tags} contentId={_id}   onDelete={() => refresh()} />)}
+        type==="Link"?<Frame contentId={_id} type={link}  onDelete={() => refresh()} key={link} description={description} title={title} link={link} />: <Card key={ link } description={description} title={title} link={link} type={type} tags={tags} contentId={_id}   onDelete={() => refresh()} />)} 
+       
+        
     </div>
   </div>
 

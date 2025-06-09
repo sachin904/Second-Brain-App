@@ -7,7 +7,9 @@ import { BACKEND_URL } from "../config";
 
 enum ContentType {
   Youtube = "youtube",
-  Twitter = "twitter"
+  Twitter = "twitter",
+  Document = "document",
+  Link= "Link",
 }
 interface CreateContentModalProps {
   open: boolean; // State to determine if the modal is open
@@ -63,7 +65,7 @@ alert(res.data.msg);
           </div>
 
           {/* Type Selector */}
-          <div className="flex justify-center mt-4 gap-2">
+          <div className="flex justify-center mt-4 gap-2 flex-wrap">
             <Button
               text="YouTube"
               onClick={() => setType(ContentType.Youtube)}
@@ -74,6 +76,16 @@ alert(res.data.msg);
               onClick={() => setType(ContentType.Twitter)}
               variant={type === ContentType.Twitter ? "primary" : "secondary"}
             />
+            <Button
+              text="Document"
+              onClick={() => setType(ContentType.Document)}
+              variant={type === ContentType.Document ? "primary" : "secondary"}
+            />
+            <Button
+              text="Link"
+              onClick={() => setType(ContentType.Link)}
+              variant={type === ContentType.Link ? "primary" : "secondary"}
+            />
           </div>
 
           {/* Add Content Button */}
@@ -82,6 +94,7 @@ alert(res.data.msg);
               onClick={addContent}
               variant="secondary"
               text="Add Content"
+              size="full"
             />
           </div>
         </div>
