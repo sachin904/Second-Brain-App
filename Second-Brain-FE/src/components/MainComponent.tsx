@@ -9,7 +9,7 @@ import axios from 'axios'
 import { BACKEND_URL } from '../config'
 import { Frame } from './Frame'
 
-export function MainContent() {
+export function MainContent({ filter }: { filter: string | null }) {
   const [modalOpen, setModalOpen] = useState(false);
   const  {contents,refresh}  = useContent();
   useEffect(()=>{
@@ -17,7 +17,9 @@ export function MainContent() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[modalOpen]);
- 
+   const filteredContents = filter
+    ? contents.filter((content) => content.type === filter)
+    : contents;
 
   return <div className='p-2  min-h-screen w-full  bg-gray-100'>
     <CreateContentModal open={modalOpen} onClose={() => { setModalOpen(false) }} />
@@ -47,8 +49,8 @@ export function MainContent() {
     </div>
     <div className='flex gap-2  flex-wrap  '>
 
-      {contents.map(({ type, link, title,tags,description,_id }) =>
-        type==="Link"?<Frame contentId={_id} type={link}  onDelete={() => refresh()} key={link} description={description} title={title} link={link} />: <Card key={ link } description={description} title={title} link={link} type={type} tags={tags} contentId={_id}   onDelete={() => refresh()} />)} 
+      {filteredContents.map(({ type, link, title,tags,description,_id }) =>
+        type==="Link"?<Frame contentId={_id} type={type}  onDelete={() => refresh()} key={link} description={description} title={title} link={link} />: <Card key={ link } description={description} title={title} link={link} type={type} tags={tags} contentId={_id}   onDelete={() => refresh()} />)} 
        
         
     </div>
